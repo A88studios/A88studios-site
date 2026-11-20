@@ -3,53 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Action 88 — ACTION Font Options</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@900&family=Audiowide&family=Racing+Sans+One&family=Bungee&family=Michroma&display=swap" rel="stylesheet">
+<title>Action 88 — Colour Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Racing+Sans+One&display=swap" rel="stylesheet">
 <style>
-  body { margin:0; font-family:system-ui, sans-serif; background:#0b0616; color:#eee; text-align:center; }
-  h1 { padding:32px 16px 0; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; max-width:1150px; margin:0 auto; padding:24px; }
-  .card { background:#140a24; border-radius:16px; padding:20px; }
-  svg { width:100%; height:auto; max-width:360px; }
-  .o { paint-order:stroke; stroke:#0b0616; stroke-linejoin:round; }
-  h2 { font-size:1.1rem; margin:12px 0 4px; }
+  body { margin:0; font-family:system-ui, sans-serif; background:#222; color:#eee; text-align:center; }
+  h1 { padding:28px 16px 0; }
+  h3 { margin:28px 0 0; color:#bbb; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:1200px; margin:0 auto; padding:20px; }
+  .card { border-radius:16px; padding:16px; }
+  svg { width:100%; height:auto; }
+  .o { paint-order:stroke; stroke-linejoin:round; }
+  .label { font-size:.95rem; margin-top:8px; }
 </style>
 </head>
 <body>
-<h1>Action 88 — "ACTION" Font Options</h1>
-<div class="grid" id="grid"></div>
+<h1>Action 88 — Colour Options</h1>
+
+<h3>Plain "ACTION" vs blurred "ACTION"</h3>
+<div class="grid" id="compare"></div>
+
+<div id="sets"></div>
 
 <script>
-const fonts = [
-  { name: "1. Orbitron",        family: "Orbitron",           size: 40, weight: 900 },
-  { name: "2. Audiowide",       family: "Audiowide",          size: 44, weight: 400 },
-  { name: "3. Racing Sans One", family: "'Racing Sans One'",  size: 54, weight: 400 },
-  { name: "4. Bungee",          family: "Bungee",             size: 42, weight: 400 },
-  { name: "5. Michroma",        family: "Michroma",           size: 34, weight: 400 }
+function logo(id, bg, blur, outline, blurWord) {
+  const word = blurWord ? `
+      <text x="156" y="92" font-size="54" fill="${blur}" opacity=".15">ACTION</text>
+      <text x="164" y="92" font-size="54" fill="${blur}" opacity=".3">ACTION</text>
+      <text x="172" y="92" font-size="54" fill="${blur}" opacity=".5">ACTION</text>` : "";
+  const wordFill = bg === "#f4f1ea" ? "#111" : "#fff";
+  return `
+  <svg viewBox="0 0 360 220">
+    <defs>
+      <linearGradient id="red${id}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ff3b3b"/><stop offset="1" stop-color="#b3001b"/>
+      </linearGradient>
+    </defs>
+    <g transform="skewX(-12) translate(20,0)" font-family="'Racing Sans One', sans-serif" text-anchor="middle" letter-spacing="4">
+      ${word}
+      <text class="o" x="180" y="92" font-size="54" fill="${wordFill}" stroke="${outline}" stroke-width="7">ACTION</text>
+    </g>
+    <g transform="skewX(-12) translate(25,0)" font-family="'Russo One', sans-serif" text-anchor="middle">
+      <text x="150" y="190" font-size="110" fill="${blur}" opacity=".15">88</text>
+      <text x="165" y="190" font-size="110" fill="${blur}" opacity=".3">88</text>
+      <text x="180" y="190" font-size="110" fill="${blur}" opacity=".5">88</text>
+      <text class="o" x="195" y="190" font-size="110" fill="url(#red${id})" stroke="${outline}" stroke-width="8">88</text>
+    </g>
+  </svg>`;
+}
+
+const blurs = [
+  { name: "Cyan",   c: "#00e5ff" },
+  { name: "Orange", c: "#ff8a00" },
+  { name: "Silver", c: "#c9ced6" },
+  { name: "Purple", c: "#9b5cff" }
+];
+const bgs = [
+  { name: "Dark purple background", c: "#140a24", outline: "#0b0616" },
+  { name: "Black background",       c: "#000000", outline: "#000000" },
+  { name: "Light background",       c: "#f4f1ea", outline: "#f4f1ea" }
 ];
 
-const grid = document.getElementById("grid");
-fonts.forEach((f, i) => {
-  grid.innerHTML += `
-  <div class="card">
-    <svg viewBox="0 0 360 220">
-      <defs>
-        <linearGradient id="hot${i}" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-      </defs>
-      <text class="o" x="180" y="70" font-family="${f.family}" font-size="${f.size}" font-weight="${f.weight}"
-            fill="#fff" stroke-width="7" text-anchor="middle" letter-spacing="4">ACTION</text>
-      <g transform="skewX(-12) translate(25,0)" font-family="'Russo One', sans-serif" text-anchor="middle">
-        <text x="150" y="190" font-size="110" fill="#00e5ff" opacity=".15">88</text>
-        <text x="165" y="190" font-size="110" fill="#00e5ff" opacity=".3">88</text>
-        <text x="180" y="190" font-size="110" fill="#00e5ff" opacity=".5">88</text>
-        <text class="o" x="195" y="190" font-size="110" fill="url(#hot${i})" stroke-width="8">88</text>
-      </g>
-    </svg>
-    <h2>${f.name}</h2>
-  </div>`;
+let n = 0;
+document.getElementById("compare").innerHTML =
+  `<div class="card" style="background:#140a24">${logo(n++, "#140a24", "#00e5ff", "#0b0616", false)}<div class="label">Plain ACTION</div></div>` +
+  `<div class="card" style="background:#140a24">${logo(n++, "#140a24", "#00e5ff", "#0b0616", true)}<div class="label">Blurred ACTION</div></div>`;
+
+let html = "";
+bgs.forEach(bg => {
+  html += `<h3>${bg.name}</h3><div class="grid">`;
+  blurs.forEach(b => {
+    const labelColor = bg.c === "#f4f1ea" ? "#333" : "#ccc";
+    html += `<div class="card" style="background:${bg.c}">${logo(n++, bg.c, b.c, bg.outline, true)}<div class="label" style="color:${labelColor}">${b.name} blur</div></div>`;
+  });
+  html += `</div>`;
 });
+document.getElementById("sets").innerHTML = html;
 </script>
 </body>
 </html>
