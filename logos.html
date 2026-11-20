@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Action 88 — Motion Logos</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Audiowide&display=swap" rel="stylesheet">
+<title>Action 88 — ACTION Font Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@900&family=Audiowide&family=Racing+Sans+One&family=Bungee&family=Michroma&display=swap" rel="stylesheet">
 <style>
   body { margin:0; font-family:system-ui, sans-serif; background:#0b0616; color:#eee; text-align:center; }
   h1 { padding:32px 16px 0; }
@@ -13,103 +13,43 @@
   svg { width:100%; height:auto; max-width:360px; }
   .o { paint-order:stroke; stroke:#0b0616; stroke-linejoin:round; }
   h2 { font-size:1.1rem; margin:12px 0 4px; }
-  p { color:#9a8fb0; margin:0; font-size:.9rem; }
 </style>
 </head>
 <body>
-<h1>Action 88 — Motion Ideas</h1>
-<div class="grid">
+<h1>Action 88 — "ACTION" Font Options</h1>
+<div class="grid" id="grid"></div>
 
-  <!-- 1. Speed streak -->
+<script>
+const fonts = [
+  { name: "1. Orbitron",        family: "Orbitron",           size: 40, weight: 900 },
+  { name: "2. Audiowide",       family: "Audiowide",          size: 44, weight: 400 },
+  { name: "3. Racing Sans One", family: "'Racing Sans One'",  size: 54, weight: 400 },
+  { name: "4. Bungee",          family: "Bungee",             size: 42, weight: 400 },
+  { name: "5. Michroma",        family: "Michroma",           size: 34, weight: 400 }
+];
+
+const grid = document.getElementById("grid");
+fonts.forEach((f, i) => {
+  grid.innerHTML += `
   <div class="card">
     <svg viewBox="0 0 360 220">
       <defs>
-        <linearGradient id="hot1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-        <linearGradient id="fade1" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#00e5ff" stop-opacity="0"/><stop offset="1" stop-color="#00e5ff"/>
-        </linearGradient>
-      </defs>
-      <g stroke="url(#fade1)" stroke-width="6" stroke-linecap="round">
-        <line x1="10" y1="70" x2="110" y2="70"/>
-        <line x1="30" y1="92" x2="100" y2="92"/>
-        <line x1="0"  y1="150" x2="120" y2="150"/>
-        <line x1="40" y1="172" x2="110" y2="172"/>
-      </g>
-      <g transform="skewX(-14) translate(30,0)">
-        <text class="o" x="190" y="100" font-family="'Russo One', sans-serif" font-size="56" fill="#fff" stroke-width="8" text-anchor="middle" letter-spacing="2">ACTION</text>
-        <text class="o" x="190" y="190" font-family="'Russo One', sans-serif" font-size="92" fill="url(#hot1)" stroke-width="8" text-anchor="middle" letter-spacing="4">88</text>
-      </g>
-    </svg>
-    <h2>1. Speed Streak</h2>
-    <p>Forward-leaning letters with neon streaks trailing behind.</p>
-  </div>
-
-  <!-- 2. Light trail through the 88 -->
-  <div class="card">
-    <svg viewBox="0 0 360 220">
-      <defs>
-        <linearGradient id="hot2" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff2e88" stop-opacity="0"/><stop offset=".6" stop-color="#ff2e88"/><stop offset="1" stop-color="#ffd23f"/>
-        </linearGradient>
-        <filter id="glow2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <text class="o" x="180" y="70" font-family="'Audiowide', sans-serif" font-size="46" fill="#fff" stroke-width="7" text-anchor="middle" letter-spacing="6">ACTION</text>
-      <text x="180" y="195" font-family="'Audiowide', sans-serif" font-size="120" fill="none" stroke="#00e5ff" stroke-width="5" text-anchor="middle" letter-spacing="4">88</text>
-      <path d="M0,150 C80,150 110,95 150,120 S230,175 260,130 S320,100 360,112" fill="none" stroke="url(#hot2)" stroke-width="6" stroke-linecap="round" filter="url(#glow2)"/>
-      <circle cx="356" cy="112" r="7" fill="#fff" filter="url(#glow2)"/>
-    </svg>
-    <h2>2. Light Trail</h2>
-    <p>Outlined neon 88 with a glowing trail racing through it, like a marble on a track.</p>
-  </div>
-
-  <!-- 3. Motion blur echoes -->
-  <div class="card">
-    <svg viewBox="0 0 360 220">
-      <defs>
-        <linearGradient id="hot3" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="hot${i}" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
         </linearGradient>
       </defs>
+      <text class="o" x="180" y="70" font-family="${f.family}" font-size="${f.size}" font-weight="${f.weight}"
+            fill="#fff" stroke-width="7" text-anchor="middle" letter-spacing="4">ACTION</text>
       <g transform="skewX(-12) translate(25,0)" font-family="'Russo One', sans-serif" text-anchor="middle">
-        <text x="150" y="185" font-size="110" fill="#00e5ff" opacity=".15">88</text>
-        <text x="165" y="185" font-size="110" fill="#00e5ff" opacity=".3">88</text>
-        <text x="180" y="185" font-size="110" fill="#00e5ff" opacity=".5">88</text>
-        <text class="o" x="195" y="185" font-size="110" fill="url(#hot3)" stroke-width="8">88</text>
-        <text class="o" x="190" y="70" font-size="50" fill="#fff" stroke-width="8" letter-spacing="3">ACTION</text>
+        <text x="150" y="190" font-size="110" fill="#00e5ff" opacity=".15">88</text>
+        <text x="165" y="190" font-size="110" fill="#00e5ff" opacity=".3">88</text>
+        <text x="180" y="190" font-size="110" fill="#00e5ff" opacity=".5">88</text>
+        <text class="o" x="195" y="190" font-size="110" fill="url(#hot${i})" stroke-width="8">88</text>
       </g>
     </svg>
-    <h2>3. Motion Blur</h2>
-    <p>Fading copies behind the 88, as if it's zooming forward.</p>
-  </div>
-
-  <!-- 4. Contained speed badge -->
-  <div class="card">
-    <svg viewBox="0 0 360 220">
-      <defs>
-        <linearGradient id="hot4" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-        <clipPath id="c4"><polygon points="50,20 340,20 310,200 20,200"/></clipPath>
-      </defs>
-      <polygon points="50,20 340,20 310,200 20,200" fill="#1d0f38"/>
-      <g clip-path="url(#c4)" stroke="#ff2e88" stroke-width="4" opacity=".55" stroke-linecap="round">
-        <line x1="20" y1="45" x2="140" y2="45"/>
-        <line x1="20" y1="175" x2="160" y2="175"/>
-        <line x1="240" y1="60" x2="340" y2="60"/>
-        <line x1="220" y1="160" x2="340" y2="160"/>
-      </g>
-      <polygon points="50,20 340,20 310,200 20,200" fill="none" stroke="#00e5ff" stroke-width="5"/>
-      <g transform="skewX(-10) translate(18,0)" font-family="'Russo One', sans-serif" text-anchor="middle">
-        <text class="o" x="180" y="88" font-size="48" fill="#fff" stroke-width="7" letter-spacing="3">ACTION</text>
-        <text class="o" x="180" y="180" font-size="86" fill="url(#hot4)" stroke-width="7" letter-spacing="4">88</text>
-      </g>
-    </svg>
-    <h2>4. Speed Badge</h2>
-    <p>A slanted frame keeps it contained like a logo, with streaks inside for motion.</p>
-  </div>
-
-</div>
+    <h2>${f.name}</h2>
+  </div>`;
+});
+</script>
 </body>
 </html>
