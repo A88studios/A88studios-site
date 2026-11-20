@@ -3,94 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Action 88 — Retro Logo Ideas</title>
+<title>Action 88 — Font Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Audiowide&family=Bungee&family=Press+Start+2P&family=Russo+One&display=swap" rel="stylesheet">
 <style>
   body { margin:0; font-family:system-ui, sans-serif; background:#0b0616; color:#eee; text-align:center; }
   h1 { padding:32px 16px 0; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; max-width:1150px; margin:0 auto; padding:24px; }
-  .card { background:#140a24; border-radius:16px; padding:24px; }
-  svg { width:100%; height:auto; max-width:360px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; max-width:1150px; margin:0 auto; padding:24px; }
+  .card { background:#140a24; border-radius:16px; padding:20px; }
+  svg { width:100%; height:auto; max-width:320px; }
+  .word { paint-order:stroke; stroke:#140a24; stroke-width:7px; stroke-linejoin:round; }
+  .num  { paint-order:stroke; stroke:#140a24; stroke-width:6px; stroke-linejoin:round; }
   h2 { font-size:1.1rem; margin:12px 0 4px; }
-  p { color:#9a8fb0; margin:0; font-size:.9rem; }
 </style>
 </head>
 <body>
-<h1>Action 88 — Retro Ideas</h1>
-<div class="grid">
+<h1>Action 88 — Font Options</h1>
+<div class="grid" id="grid"></div>
 
-  <!-- A. Sunset stacked -->
+<script>
+const fonts = [
+  { name: "1. Orbitron",       family: "Orbitron",        word: 40, num: 66 },
+  { name: "2. Audiowide",      family: "Audiowide",       word: 42, num: 70 },
+  { name: "3. Bungee",         family: "Bungee",          word: 40, num: 70 },
+  { name: "4. Press Start 2P", family: "'Press Start 2P'", word: 28, num: 54 },
+  { name: "5. Russo One",      family: "'Russo One'",     word: 44, num: 72 }
+];
+
+const grid = document.getElementById("grid");
+fonts.forEach((f, i) => {
+  grid.innerHTML += `
   <div class="card">
-    <svg viewBox="0 0 360 240">
+    <svg viewBox="0 0 320 280">
       <defs>
-        <linearGradient id="sunA" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="sun${i}" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
         </linearGradient>
+        <clipPath id="frame${i}"><rect x="20" y="10" width="280" height="260" rx="28"/></clipPath>
       </defs>
-      <circle cx="180" cy="100" r="80" fill="url(#sunA)"/>
-      <g fill="#140a24">
-        <rect x="100" y="112" width="160" height="5"/>
-        <rect x="100" y="128" width="160" height="7"/>
-        <rect x="100" y="146" width="160" height="10"/>
-      </g>
-      <text x="180" y="105" font-family="system-ui, sans-serif" font-size="52" font-weight="900" fill="#fff" stroke="#00e5ff" stroke-width="2" text-anchor="middle" letter-spacing="4">ACTION</text>
-      <text x="180" y="225" font-family="system-ui, sans-serif" font-size="56" font-weight="900" fill="#00e5ff" text-anchor="middle" letter-spacing="10">88</text>
-    </svg>
-    <h2>A. Sunset Stacked</h2>
-    <p>"ACTION" across the sun, with a big neon 88 underneath.</p>
-  </div>
 
-  <!-- B. Wide banner with grid -->
-  <div class="card">
-    <svg viewBox="0 0 360 240">
-      <defs>
-        <linearGradient id="sunB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-        <linearGradient id="txtB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#9ff6ff"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-      </defs>
-      <circle cx="180" cy="120" r="70" fill="url(#sunB)"/>
-      <rect x="0" y="140" width="360" height="100" fill="#140a24"/>
-      <g stroke="#ff2e88" stroke-width="2" opacity=".8">
-        <line x1="0" y1="150" x2="360" y2="150"/><line x1="0" y1="168" x2="360" y2="168"/>
-        <line x1="0" y1="192" x2="360" y2="192"/><line x1="0" y1="224" x2="360" y2="224"/>
-        <line x1="180" y1="140" x2="180" y2="240"/><line x1="180" y1="140" x2="60" y2="240"/>
-        <line x1="180" y1="140" x2="300" y2="240"/><line x1="180" y1="140" x2="-40" y2="240"/>
-        <line x1="180" y1="140" x2="400" y2="240"/>
-      </g>
-      <text x="180" y="150" font-family="Impact, system-ui, sans-serif" font-size="62" font-style="italic" fill="url(#txtB)" stroke="#00e5ff" stroke-width="1.5" text-anchor="middle" letter-spacing="2">ACTION 88</text>
-    </svg>
-    <h2>B. Neon Horizon</h2>
-    <p>"ACTION 88" on one line over a sunset and a glowing grid floor.</p>
-  </div>
-
-  <!-- C. Round badge -->
-  <div class="card">
-    <svg viewBox="0 0 360 240">
-      <defs>
-        <linearGradient id="sunC" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e88"/>
-        </linearGradient>
-        <clipPath id="clipC"><circle cx="180" cy="120" r="100"/></clipPath>
-      </defs>
-      <circle cx="180" cy="120" r="108" fill="none" stroke="#00e5ff" stroke-width="5"/>
-      <g clip-path="url(#clipC)">
-        <rect x="70" y="10" width="220" height="220" fill="#1d0f38"/>
-        <circle cx="180" cy="135" r="62" fill="url(#sunC)"/>
+      <rect x="20" y="10" width="280" height="260" rx="28" fill="#1d0f38"/>
+      <g clip-path="url(#frame${i})">
+        <circle cx="160" cy="125" r="78" fill="url(#sun${i})"/>
         <g fill="#1d0f38">
-          <rect x="110" y="140" width="140" height="5"/>
-          <rect x="110" y="154" width="140" height="7"/>
-          <rect x="110" y="170" width="140" height="10"/>
+          <rect x="70" y="128" width="180" height="5"/>
+          <rect x="70" y="143" width="180" height="7"/>
+          <rect x="70" y="160" width="180" height="10"/>
+        </g>
+        <rect x="20" y="180" width="280" height="90" fill="#140a24"/>
+        <g stroke="#ff2e88" stroke-width="1.5" opacity=".75">
+          <line x1="20" y1="188" x2="300" y2="188"/>
+          <line x1="20" y1="202" x2="300" y2="202"/>
+          <line x1="20" y1="222" x2="300" y2="222"/>
+          <line x1="20" y1="250" x2="300" y2="250"/>
+          <line x1="160" y1="180" x2="160" y2="270"/>
+          <line x1="160" y1="180" x2="90"  y2="270"/>
+          <line x1="160" y1="180" x2="230" y2="270"/>
+          <line x1="160" y1="180" x2="20"  y2="270"/>
+          <line x1="160" y1="180" x2="300" y2="270"/>
         </g>
       </g>
-      <text x="180" y="78" font-family="system-ui, sans-serif" font-size="34" font-weight="900" fill="#fff" text-anchor="middle" letter-spacing="6">ACTION</text>
-      <text x="180" y="150" font-family="system-ui, sans-serif" font-size="70" font-weight="900" fill="#fff" stroke="#00e5ff" stroke-width="2.5" text-anchor="middle">88</text>
-    </svg>
-    <h2>C. Arcade Badge</h2>
-    <p>A round badge, good for an app icon or a sticker.</p>
-  </div>
+      <rect x="20" y="10" width="280" height="260" rx="28" fill="none" stroke="#00e5ff" stroke-width="4"/>
 
-</div>
+      <text class="word" x="160" y="125" font-family="${f.family}" font-size="${f.word}" font-weight="900"
+            fill="#ffffff" text-anchor="middle" letter-spacing="3">ACTION</text>
+      <text class="num" x="160" y="245" font-family="${f.family}" font-size="${f.num}" font-weight="900"
+            fill="#00e5ff" text-anchor="middle" letter-spacing="6">88</text>
+    </svg>
+    <h2>${f.name}</h2>
+  </div>`;
+});
+</script>
 </body>
 </html>
